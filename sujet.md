@@ -82,3 +82,49 @@ Ces experiences sont plus utiles pour de grosses infrastructures avec de nombreu
 C'est un moyen de tester le système dans des conditions extrêmes.
 Les variables à observer sont très dépendante de l'application. 
 Il faut avant tout déterminer l'utilisation principale du système.
+
+### 1.
+
+Mael
+<!-- On November 24, 2021, a vulnerability was discovered in Log4j, an open-source logging library owned by Apache used by Java applications and services on the web. This library has been around since 2001 and is widely used. 
+
+sources :
+- [ncsc.gov.uk](https://www.ncsc.gov.uk/information/log4j-vulnerability-what-everyone-needs-to-know)
+- [upgard.com](https://www.upguard.com/blog/apache-log4j-vulnerability) -->
+
+
+
+### 2. 
+
+> Issue link : [586](https://issues.apache.org/jira/browse/COLLECTIONS-586)
+> 
+> Title : PatriciaTrie prefixMap clear throws NullPointerException
+> 
+> Pr link : [PR-18](https://github.com/apache/commons-collections/pull/18)
+
+- **Context** :
+  The `PatriciaTrie` class is a data structure that allows to store and retrieve values based on a key. It's a tree structure where each node is a character of the key. It fonctionnality is similar to a **HashMap** but it's more efficient when the keys have a common prefix.
+  
+- **Problem description** : When the method `clear()` was called on an instance of a class `PatriciaTrie` it raised a NullPointerException.
+
+- **Workaround** : The contributor who sumbit the issue proposed a workaround. Instead of calling the `clear()` method, you would remove each key of the PatriciaTrie instance with the method remove(Object key).
+
+- **Solution description** : The method `clear()` of the class PatriciaTrie was overriden to call the method `clear()` of the class PatriciaTrie instead of the method `clear()` of the parent class AbstractMap.
+
+- **Tests** : Two tests cases were added to the test suite of the class. The bug should not appear anymore if the tests pass.
+
+This type of bug is **local** because it is due to an omission by the developer for not overriding the method `clear()` of the class `PatriciaTrie` even the inner data type of the class changed.
+
+After the pull request review, the tests passed, it was merged and the issue was closed.
+
+
+
+
+### 4. 
+
+The main advantages of having a formal specification for WebAssembly are that it is easier to reason about the language and its programs, and that it can be used to verify implementations. This does not mean that implementations should not be tested, but that it may be easier to find errors in implementations that do not conform to the specification.
+
+### 5.
+
+
+The main advantages of the mechanized specification are that it is easier to read and understand, and that it can be used to generate test cases. The mechanized specification also helped improve the original formal specification of the language by making it easier to understand and more precise. Other artifacts that were derived from this mechanized specification include a model checker and a prototype implementation. The author verified the specification by using the model checker and the prototype implementation. This new specification does not remove the need for testing, but it does make it easier to test the language.
