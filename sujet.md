@@ -41,3 +41,44 @@ Les conséquences pour les clients sont que certains sites ne sont plus accessib
 Je pense que le test de la bonne implémentation de la fonction (A) aurait permis de détecter le bug.
 C'est d'ailleurs ce que Cloudflare a indiqué s'engager à faire dans le futur. Notamment en utilisant un plus large panel de configuration.
 Internet comporte de nombreux protocoles plus ou moins libre et il est très difficile de faire un système qui régisse correctement à tous les cas.
+
+3. Netflix et le Chaos Engineering
+
+Source: https://arxiv.org/ftp/arxiv/papers/1702/1702.05843.pdf
+
+Voici quelques exemples d'expériences réalisées par Netflix :
+- Mettre fin aux instances de machines virtuelles.
+- Injecter de la latence dans les requêtes entre services.
+- Faire échouer les requêtes entre les services.
+- Faire échouer un service interne
+- Rendre indisponible une région entière AWS
+
+---
+
+Il faut commencer par définir un "état stable" du système.
+C'est-à-dire un état dans lequel le système est fonctionnel et répond correctement aux requêtes.
+
+On part maintenant du principe que cet état stable sera conservé pendant toute l'expérience.
+
+Après avoir défini cet état stable, on peut commencer à injecter des perturbations dans le système. 
+On peut ainsi observer les effets de ces perturbations sur le système.
+
+Netflix utilise plusieurs métriques pour évaluer le système. C'est une plateforme de streaming video, 
+donc les métriques sont principalement liées à la qualité de l'image et la stabilité du stream.
+Ils utilisent par exemple le SPS (stream starts per second).
+
+Les métriques plus précises comme le CPU ou la mémoire sont moins utilisés, car elles ne mesurent pas directement l'expérience utilisateur.
+
+En observant le SPS, on peut voir que le système est utilisé le plus entre 15h et 23h.
+
+---
+
+Netflix n'est pas l'unique entreprise à utiliser le Chaos Engineering. 
+On cite notamment LinkedIn, Facebook, Google, Microsoft, Amazon et bien d'autres.
+
+---
+
+Ces experiences sont plus utiles pour de grosses infrastructures avec de nombreux services.
+C'est un moyen de tester le système dans des conditions extrêmes.
+Les variables à observer sont très dépendante de l'application. 
+Il faut avant tout déterminer l'utilisation principale du système.
