@@ -38,13 +38,13 @@ Problem description :
 > When the method `clear()` was called on an instance of a class `PatriciaTrie` it raised a NullPointerException.
 
 Workaround :
-> A workaround was to call the method remove each key of the PatriciaTrie instance with the method remove(Object key) of the class PatriciaTrie.
+> The contributor who sumbit the issue proposed a workaround. Instead of calling the `clear()` method, you would remove each key of the PatriciaTrie instance with the method remove(Object key).
 
 Solution description :
 > The method `clear()` of the class PatriciaTrie was overriden to call the method `clear()` of the class PatriciaTrie instead of the method `clear()` of the parent class AbstractMap.
 
 Tests :
-> Two tests cases were added to the test suite of the class.
+> Two tests cases were added to the test suite of the class. The bug should not appear anymore if the tests pass.
 
 This type of bug is **local** because it is due to an omission by the developer for not overriding the method `clear()` of the class `PatriciaTrie` even the inner data type of the class changed.
 
