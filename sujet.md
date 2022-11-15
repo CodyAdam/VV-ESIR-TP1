@@ -26,7 +26,9 @@ sources :
 
 ### 2. 
 Issue : [586](https://issues.apache.org/jira/browse/COLLECTIONS-586)
+
 Title : PatriciaTrie prefixMap clear throws NullPointerException 
+
 Pr : [PR-18](https://github.com/apache/commons-collections/pull/18)
 
 Context :
