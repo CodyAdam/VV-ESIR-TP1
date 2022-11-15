@@ -25,11 +25,12 @@ sources :
 
 
 ### 2. 
-Issue : [586](https://issues.apache.org/jira/browse/COLLECTIONS-586)
 
-Title : PatriciaTrie prefixMap clear throws NullPointerException 
-
-Pr : [PR-18](https://github.com/apache/commons-collections/pull/18)
+> Issue : [586](https://issues.apache.org/jira/browse/COLLECTIONS-586)
+>
+> Title : PatriciaTrie prefixMap clear throws NullPointerException 
+> 
+> Pr : [PR-18](https://github.com/apache/commons-collections/pull/18)
 
 Context :
 > The `PatriciaTrie` class is a data structure that allows to store and retrieve values based on a key. It's a tree structure where each node is a character of the key. It fonctionnality is similar to a **HashMap** but it's more efficient when the keys have a common prefix.
