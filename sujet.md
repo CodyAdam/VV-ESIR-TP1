@@ -12,7 +12,9 @@
 
 ## Answers
 
-1. Partial Cloudflare outage on October 25, 2022
+### 1.
+
+**Partial Cloudflare outage on October 25, 2022**
 
 Source: https://blog.cloudflare.com/partial-cloudflare-outage-on-october-25-2022/
 
@@ -50,25 +52,23 @@ Internet comporte de nombreux protocoles plus ou moins libre et il est très dif
 > Title : PatriciaTrie prefixMap clear throws NullPointerException
 >
 > Pr link : [PR-18](https://github.com/apache/commons-collections/pull/18)
+- **Contexte** :
+  La classe `PatriciaTrie` est une structure de données qui permet de stocker et de récupérer des valeurs en fonction d'une clé. C'est une structure en forme d'arbre où chaque noeud est un caractère de la clé. Sa fonctionnalité est similaire à une **HashMap** mais elle est plus efficace lorsque les clés ont un préfixe commun.
 
-- **Context** :
-  The `PatriciaTrie` class is a data structure that allows to store and retrieve values based on a key. It's a tree structure where each node is a character of the key. It fonctionnality is similar to a **HashMap** but it's more efficient when the keys have a common prefix.
+- Description du problème** : Lorsque la méthode `clear()` est appelée sur une instance de la classe `PatriciaTrie`, elle lève une NullPointerException.
 
-- **Problem description** : When the method `clear()` was called on an instance of a class `PatriciaTrie` it raised a NullPointerException.
+- Solution** : Le contributeur qui a soulevé le problème a proposé une solution de contournement. Au lieu d'appeler la méthode `clear()`, vous supprimez chaque clé de l'instance PatriciaTrie avec la méthode remove(Object key).
 
-- **Workaround** : The contributor who sumbit the issue proposed a workaround. Instead of calling the `clear()` method, you would remove each key of the PatriciaTrie instance with the method remove(Object key).
+- **Description de la solution** : La méthode `clear()` de la classe PatriciaTrie était surchargée pour appeler la méthode `clear()` de la classe PatriciaTrie au lieu de la méthode `clear()` de la classe parente AbstractMap.
 
-- **Solution description** : The method `clear()` of the class PatriciaTrie was overriden to call the method `clear()` of the class PatriciaTrie instead of the method `clear()` of the parent class AbstractMap.
+- **Tests** : Deux cas de tests ont été ajoutés à la suite de tests de la classe. Le bug ne devrait plus apparaître si les tests passent.
 
-- **Tests** : Two tests cases were added to the test suite of the class. The bug should not appear anymore if the tests pass.
+Ce type de bug est **local** car il est dû à une omission du développeur qui n'a pas surchargé la méthode `clear()` de la classe `PatriciaTrie` même si le type de données interne de la classe a changé.
 
-This type of bug is **local** because it is due to an omission by the developer for not overriding the method `clear()` of the class `PatriciaTrie` even the inner data type of the class changed.
-
-After the pull request review, the tests passed, it was merged and the issue was closed.
-
+Après la revue de la pull request, les tests ont été passés, la pull request a été merged et l'issue a été fermé.
 
 
-3. Netflix et le Chaos Engineering
+1. Netflix et le Chaos Engineering
 
 Source: https://arxiv.org/ftp/arxiv/papers/1702/1702.05843.pdf
 
@@ -111,10 +111,9 @@ Il faut avant tout déterminer l'utilisation principale du système.
 
 
 ### 4. 
-
-The main advantages of having a formal specification for WebAssembly are that it is easier to reason about the language and its programs, and that it can be used to verify implementations. This does not mean that implementations should not be tested, but that it may be easier to find errors in implementations that do not conform to the specification.
+Les principaux avantages d'avoir une spécification formelle pour WebAssembly sont qu'il est "déterministe et facile à raisonner autour" ; cela rend le langage plus sûr et plus facile à mettre en œuvre en raison de moins d'ambiguïté étant donné qu'il est plus opinionné.
+Cela ne signifie pas que les implémentations ne doivent pas être testées, mais qu'il peut être plus facile de trouver les bogues introduits dans les implémentations qui ne sont pas conformes à la spécification.
 
 ### 5.
 
-
-The main advantages of the mechanized specification are that it is easier to read and understand, and that it can be used to generate test cases. The mechanized specification also helped improve the original formal specification of the language by making it easier to understand and more precise. Other artifacts that were derived from this mechanized specification include a model checker and a prototype implementation. The author verified the specification by using the model checker and the prototype implementation. This new specification does not remove the need for testing, but it does make it easier to test the language.
+L'article décrit explicitement comment tester l'implémentation pour qu'elle soit conforme aux spécifications de l'article précédent en utilisant des preuves. Cela signifie que les utilisateurs doivent toujours tester leur implémentation pour s'assurer qu'elle est correcte, mais qu'il n'est plus nécessaire de tester la spécification.
